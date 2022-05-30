@@ -1,28 +1,29 @@
+import { useEffect } from 'react';
 import './App.css';
 
-const Person = () => {
-  return (
-    <>
-      <h1>Name: John</h1>
-      <h2>Last Name: Doe</h2>
-      <h2>Age: 30</h2>
-    </>
-  );
-}
+// API Key
+// 9e1aa0a
+
+// API URL variable
+const API_URL = 'http://www.omdbapi.com?apikey=9e1aa0a'
 
 const App = () => {
-  // variables
-  const name = 'John'
 
-  // ternary expressions
-  const isNameShowing = true;
+  // function to fetch movies
+  const searchMovies = async (title) => {
+    // call API
+    const response = await fetch(`${API_URL}&s=${title}`);
+    const data = await response.json();
+
+    console.log(data)
+  }
+
+  useEffect (() => {
+    searchMovies('Spiderman');
+  }, []);
 
   return (
-    <div classname="App">
-      <h1>Hello, {isNameShowing ? name : 'someone else'}!</h1>
-
-      <Person />
-    </div>
+    <h1>This is an app :)</h1>
   );
 }
 
