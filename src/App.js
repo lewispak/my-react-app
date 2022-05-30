@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import './App.css';
+import SearchIcon from './search.svg'
 
 // API Key
 // 9e1aa0a
