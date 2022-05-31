@@ -12,13 +12,13 @@ import MovieCard from './MovieCard';
 // API URL variable
 const API_URL = 'http://www.omdbapi.com?apikey=9e1aa0a'
 
-const movie1 = {
-  "Poster": "https://m.media-amazon.com/images/M/MV5BYjFhN2RjZTctMzA2Ni00NzE2LWJmYjMtNDAyYTllOTkyMmY3XkEyXkFqcGdeQXVyNTA0OTU0OTQ@._V1_SX300.jpg",
-  "Title": "Italian Spiderman",
-  "Type": "movie",
-  "Year": "2007",
-  "imdbID": "tt2705436"
-}
+// const movie1 = {
+//   "Poster": "https://m.media-amazon.com/images/M/MV5BYjFhN2RjZTctMzA2Ni00NzE2LWJmYjMtNDAyYTllOTkyMmY3XkEyXkFqcGdeQXVyNTA0OTU0OTQ@._V1_SX300.jpg",
+//   "Title": "Italian Spiderman",
+//   "Type": "movie",
+//   "Year": "2007",
+//   "imdbID": "tt2705436"
+// }
 
 const App = () => {
 
@@ -38,7 +38,7 @@ const App = () => {
   }
 
   useEffect (() => {
-    searchMovies('Spiderman');
+    searchMovies();
   }, []);
 
   return (
@@ -72,7 +72,8 @@ const App = () => {
           <div className="empty">
             <h1>No movies found</h1>
           </div>
-        )}
+        )
+      }
     </div>
   );
 }
