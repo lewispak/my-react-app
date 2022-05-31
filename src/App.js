@@ -1,4 +1,6 @@
-import { useEffect } from 'react';
+// useEffect to fetch data from API as soon as component loads
+// useState to get data from console.log to component
+import { useState, useEffect } from 'react';
 import './App.css';
 import SearchIcon from './search.svg'
 
@@ -20,13 +22,16 @@ const movie1 = {
 
 const App = () => {
 
+  // to get movies from console.log to component - setMovie setter function
+  const [ movies, setMovies] = useState([]);
+
   // function to fetch movies
   const searchMovies = async (title) => {
     // call API
     const response = await fetch(`${API_URL}&s=${title}`);
     const data = await response.json();
 
-    console.log(data.Search)
+    setMovies(data.Search);
   }
 
   useEffect (() => {
@@ -50,11 +55,21 @@ const App = () => {
         </img>
       </div>
 
-      <div className="container">
-        <MovieCard movie1={movie1} />
-      </div>
+      {
+        movies?.length > 0
+          ? (
+            <div className="container">
+              <MovieCard movie1={movie1} />
+             </div>
+          ) : (
+            <div className="empty">
+              <h1>No movies found</h1>
+            </div>
+          )
+
+      }
     </div>
-   );
+  );
 }
 
 export default App;
